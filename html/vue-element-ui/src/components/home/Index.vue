@@ -36,6 +36,7 @@
                 </transition>
             </el-col>
         </el-row>
+
     </div>
 
 </template>
@@ -47,7 +48,7 @@ export default {
         return {
             show:false,
             loading:{},
-            items:Array(1).fill(item)
+            items:Array(1).fill(item),
         }
     },
     created:function () {
@@ -63,6 +64,9 @@ export default {
             this.loading.close();
             this.show = true;
         }, 1500);
+    },
+    methods: {
+
     }
 }
 </script>

@@ -1,6 +1,7 @@
 <template>
     <el-container style="height:100%;border: 1px solid #eee;">
         <el-header style="color: #FFFFFF;line-height: 60px;text-align: right;font-size: 12px">
+            <span style="float:left;font-size: 18px;">vue-element-ui前后端分离</span>
             <ThemePicker></ThemePicker>
             <el-dropdown>
                 <i class="el-icon-setting" style="margin-right: 15px;"></i>
@@ -12,17 +13,9 @@
             <span class="txt">王小虎</span>
         </el-header>
         <el-container>
+
             <el-aside width="200px" class="defined-scroll-el" style="background-color: rgb(238, 241, 246);overflow-y: auto;overflow-x: hidden;">
-                <el-menu v-if="menuList && menuList.length > 0">
-                    <el-menu-item index="0" @click="addTab('0','首页','HomeIndex')"><i class="el-icon-menu"></i>首页</el-menu-item>
-                    <el-submenu v-for="item in menuList" :index="item.id" :key="item.id">
-                        <template slot="title">
-                            <i v-if="item.icon != null && item.icon != ''" :class="item.icon"></i>
-                            {{ item.title }}
-                        </template>
-                        <SidebarMenu @addTab = "addTab" :menuList = "item.children"></SidebarMenu>
-                    </el-submenu>
-                </el-menu>
+                <sidebar-menu @addTab = "addTab" :menuList = "menuList"></sidebar-menu>
             </el-aside>
 
             <el-main>
@@ -54,14 +47,19 @@ var menuList = [
     {id:'1',title:'系统管理',icon:'el-icon-setting',children:[
         {id:'11',title:'用户管理',icon:'el-icon-service',component:'UserIndex',children:[]},
         {id:'12',title:'部门管理',icon:'el-icon-info',component:'DeptIndex',children:[
-            {id:'121',title:'部门1',component:'DeptIndex',children:[]},
-            {id:'122',title:'部门分支',component:'DeptIndex',children:[
-                {id:'1221',title:'部门分支1',component:'DeptIndex',children:[]},
-                {id:'12212',title:'部门分支12',component:'DeptIndex',children:[
-                    {id:'121222',title:'部门122',component:'DeptIndex',children:[]}
+            {id:'121',title:'部门',component:'DeptIndex',children:[]},
+            {id:'1111',title:'部门分支111',component:'DeptIndex',children:[
+                {id:'1221',title:'部门分支',component:'DeptIndex',children:[]},
+                {id:'22222',title:'部门分支222',component:'DeptIndex',children:[
+                    {id:'333',title:'部门333',component:'DeptIndex',children:[
+                        {id:'444',title:'部门4444',component:'DeptIndex',children:[]}
+                    ]}
                 ]}
             ]}
         ]}
+    ]},
+    {id:'2',title:'插件管理',icon:'el-icon-loading',children:[
+        {id:'21',title:'图片上传',icon:'el-icon-picture-outline',component:'OtherUpload',children:[]}
     ]}
 ];
 
